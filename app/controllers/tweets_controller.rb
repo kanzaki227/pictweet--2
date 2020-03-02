@@ -8,8 +8,14 @@ class TweetsController < ApplicationController
   end
 
   def create
-    Tweet.create(tweet_params)
+    tweet = Tweet.new(tweet_params)
+    tweet.save
     redirect_to "/"
+  end
+
+  def destroy
+    tweet = Tweet.find(params[:id])
+    tweet.destroy
   end
 
   private
